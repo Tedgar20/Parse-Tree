@@ -8,7 +8,7 @@ using namespace std;
 /*
  * main.cpp
  */
-//int errorCount = 0;
+
 int lineNumber;
 string fileName;
 int errorCount = 0;
@@ -29,14 +29,14 @@ void NodeTraverse(ParseTree *t)
            	NodeTraverse(t->getLeft());
        	if( t->getRight() )
            	NodeTraverse(t->getRight());
-   		try
-  		{
-    		t->eval();
-  		}
-  		catch (const std::exception& e)
-  		{
-    		cout << e.what() << '\n';
-  		}
+	try
+	{
+		t->eval();
+	}
+	catch (const std::exception& e)
+	{
+		cout << e.what() << '\n';
+	}
 }
 
 void SemanticTraverse(ParseTree *t) 
@@ -45,7 +45,7 @@ void SemanticTraverse(ParseTree *t)
            	SemanticTraverse(t->getLeft());
        	if( t->getRight() )
            	SemanticTraverse(t->getRight());
-   		t->findSemanticErrors();
+   	t->findSemanticErrors();
 }
 map<string,Value> SymbolTable;
 int main(int argc, char *argv[])
@@ -54,49 +54,49 @@ int main(int argc, char *argv[])
    	if( argc == 1 ) 														//Check to see if the program is given only its name as an argument
 	{																
 		ParseTree *tree = Prog( &cin );
-       	if( tree != 0 )
-        {
-           	SemanticTraverse(tree);
-           	if( errorCount == 0 )
-           		NodeTraverse(tree);
-           	return 0;
-        }
-       	else if( tree == 0 ) 
-        {
-		   // there was some kind of parse error
-		   return 1;
+		if( tree != 0 )
+		{
+			SemanticTraverse(tree);
+			if( errorCount == 0 )
+				NodeTraverse(tree);
+			return 0;
+		}
+		else if( tree == 0 ) 
+		{
+			   // there was some kind of parse error
+			   return 1;
 		}
 	}
    	else if( clArgs != (argc-1) )
-    {
-    	cerr << "TOO MANY FILES" << endl;
-        return -1;
-    }
+    	{
+		cerr << "TOO MANY FILES" << endl;
+		return -1;
+   	}
    	
    	ifstream infile(argv[clArgs]);
    	fileName = argv[clArgs];
    	if(infile.is_open() == false)
    	{
-      	cerr << argv[clArgs] << " FILE NOT FOUND" << endl;
-      	return -1;
+		cerr << argv[clArgs] << " FILE NOT FOUND" << endl;
+		return -1;
    	}
    	else
-    {
+   	{
 		ParseTree *tree = Prog( &infile );
-       	if( tree != 0 )
-        {
-           	
-           	SemanticTraverse(tree);
-           	if( errorCount == 0 )
-               NodeTraverse(tree);
-         	return 0;
-        }
-       	else if( tree == 0 ) 
-        {
-           cout << "EEROR";
-		   // there was some kind of parse error
-		   return 1;
+		if( tree != 0 )
+		{
+
+			SemanticTraverse(tree);
+			if( errorCount == 0 )
+		       NodeTraverse(tree);
+			return 0;
 		}
-    }
+		else if( tree == 0 ) 
+		{
+		   cout << "EEROR";
+			   // there was some kind of parse error
+			   return 1;
+		}
+   	}
 	return 0;
 }
