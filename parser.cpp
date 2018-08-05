@@ -2,7 +2,6 @@
  * parser.cpp
  *
  */
-#include "stdafx.h"
 #include <string>
 using std::string;
 
