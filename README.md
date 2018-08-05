@@ -19,7 +19,7 @@ SEMANTIC RULES FOR THIS LANGUAGE
 12. Dividing two strings results in a string where the first instance of the denominator that is found in the numerator is removed
 
 
-EXAMPLE
+EXAMPLE PROGRAM
 
 int x;
 
@@ -37,7 +37,8 @@ println x+y;
 
 println z*x;
 
-OUTPUT
+
+OUTPUT OF ABOVE PROGRAM
 
 hihihihihi
 
