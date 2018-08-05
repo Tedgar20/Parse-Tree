@@ -1,8 +1,6 @@
 /*
  * lexer.h
- *
- * CS280
- * Fall 2017
+ * 
  */
 
 #ifndef LEXER_H_
@@ -48,7 +46,7 @@ enum TokenType {
 class Token {
 	TokenType	tt;
 	string		lexeme;
-	int			lnum;
+	int		lnum;
 
 public:
 	Token(TokenType tt = T_ERROR, string lexeme = "") : tt(tt), lexeme(lexeme) {
