@@ -22,15 +22,23 @@ SEMANTIC RULES FOR THIS LANGUAGE
 EXAMPLE
 
 int x;
+
 int y;
+
 string z;
+
 set x 5;
+
 set y 3;
+
 set z "hi";
+
 println x+y;
+
 println z*x;
 
 OUTPUT
 
 hihihihihi
+
 8
